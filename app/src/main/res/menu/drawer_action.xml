@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/notw_tour"
+        android:icon="@drawable/ic_queen_logo"
+        android:title="@string/notw_tour">
+    </item>
+
+    <item android:id="@+id/crazy_tour"
+        android:icon="@drawable/ic_queen_logo"
+        android:title="@string/crazy_tour">
+    </item>
+
+    <item android:id="@+id/game_tour"
+        android:icon="@drawable/ic_queen_logo"
+        android:title="@string/game_tour">
+    </item>
+</menu>

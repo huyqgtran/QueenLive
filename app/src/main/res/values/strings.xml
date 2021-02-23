@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Queen Live</string>
+    <string name="favorite">Favorite</string>
+    <string name="crazy_tour">Crazy tour</string>
+    <string name="notw_tour">NOTW tour</string>
+    <string name="game_tour">Game tour</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_text">Search on Youtube</string>
+    <string name="share">Share</string>
+</resources>

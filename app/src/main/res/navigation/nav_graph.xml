@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/tour_fragment_dst">
+    <fragment
+        android:id="@+id/tour_fragment_dst"
+        android:name="com.huyqgtran.queenlive.ui.TourFragment">
+
+        <action android:id="@+id/tour_fragment_to_show_fragment"
+            app:destination="@id/show_fragment_dst"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/show_fragment_dst"
+        android:name="com.huyqgtran.queenlive.ui.ShowFragment">
+
+        <action android:id="@+id/show_fragment_to_song_fragment"
+            app:destination="@id/song_fragment_dst"/>
+
+        <argument android:name="tourName"
+            app:argType="string"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/song_fragment_dst"
+        android:name="com.huyqgtran.queenlive.ui.SongFragment">
+
+        <argument android:name="showDate"
+            app:argType="string"/>
+
+    </fragment>
+</navigation>
