@@ -8,6 +8,7 @@ import com.huyqgtran.queenlive.data.localsrc.mapper.LocalMapper
 import com.huyqgtran.queenlive.data.localsrc.mapper.LocalMapperImpl
 import com.huyqgtran.queenlive.data.localsrc.worker.LocalSourceReader
 import com.huyqgtran.queenlive.domain.repository.DataRepository
+import com.huyqgtran.queenlive.ui.adapter.TourAdapter
 import com.huyqgtran.queenlive.ui.mapper.ViewMapper
 import com.huyqgtran.queenlive.ui.mapper.ViewMapperImpl
 import com.huyqgtran.queenlive.ui.viewmodels.ShowViewModel

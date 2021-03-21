@@ -4,6 +4,6 @@ import java.time.Year
 
 data class Tour(
     val name: String,
-    val date: Year,
+    val date: String,
     val descriptionUrl: String
 )

@@ -5,5 +5,6 @@ import java.time.LocalDate
 data class Song(
     val date: LocalDate,
     val name: String,
-    val showName: String
+    val showName: String,
+    var rarePlayed: Boolean = false
 )

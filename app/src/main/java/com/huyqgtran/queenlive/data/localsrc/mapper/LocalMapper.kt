@@ -12,5 +12,5 @@ interface LocalMapper {
 
     fun jsonShowToShow(jsonShow: String, tour: String): Show
 
-    fun jsonSongToSong(date: LocalDate, name: String, showName: String): Song
+    fun jsonSongToSong(date: LocalDate, name: String, showName: String, rarelyPlayed: Boolean): Song
 }

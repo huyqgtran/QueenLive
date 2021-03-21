@@ -22,7 +22,7 @@ class DbMapperImpl :DbMapper {
 
     override fun songToDbSong(song: Song): DbSong {
         return with(song) {
-            DbSong(date, name)
+            DbSong(date, name, rarePlayed)
         }
     }
 
@@ -45,7 +45,7 @@ class DbMapperImpl :DbMapper {
     override fun listDbSongToSong(dbSong: List<DbSong>, showName: String): List<Song> {
         return dbSong.map {
             with(it) {
-                Song(showDate, name, showName)
+                Song(showDate, name, showName, rarelyPlayed)
             }
         }
     }

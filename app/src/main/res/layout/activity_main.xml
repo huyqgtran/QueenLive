@@ -31,7 +31,8 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:elevation="0dp">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -39,7 +40,6 @@
                 android:layout_height="wrap_content"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="@style/MyActionBar"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:titleTextColor="#fafafa"/>
         </com.google.android.material.appbar.AppBarLayout>
 

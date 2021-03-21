@@ -17,5 +17,6 @@ data class ViewShow(
 data class ViewSong(
         val date: String,
         val name: String,
-        val showName: String
+        val showName: String,
+        val rarelyPlayed: Boolean
 )

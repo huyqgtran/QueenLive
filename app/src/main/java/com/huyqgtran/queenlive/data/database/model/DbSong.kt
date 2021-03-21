@@ -16,5 +16,6 @@ import java.time.LocalDate
 )
 data class DbSong(
     @ColumnInfo(name = "show_date") val showDate: LocalDate,
-    val name: String
+    val name: String,
+    val rarelyPlayed: Boolean
 )

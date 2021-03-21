@@ -4,39 +4,37 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#fafafa"
-    android:orientation="vertical"
-    android:paddingBottom="16dp"
-    android:paddingEnd="16dp"
-    android:paddingStart="16dp">
-
-    <View
-        android:id="@+id/item_divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="16dp"
-        android:background="#D3D3D3" />
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/list_item_padding"
+    android:paddingBottom="@dimen/list_item_padding"
+    android:paddingEnd="@dimen/list_item_padding"
+    android:paddingStart="@dimen/list_item_padding">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
+        android:orientation="vertical">
         <TextView
             android:id="@+id/title_text"
-            android:layout_weight="1"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#000000"
+            android:textColor="?android:textColorPrimary"
             android:textSize="@dimen/tour_text_size"
             android:ellipsize="marquee"/>
 
-        <ImageView
-            android:id="@+id/more_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/more_button"
-            android:layout_gravity="center_vertical"/>
+        <TextView
+            android:id="@+id/note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/more_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/more_button"
+        android:layout_gravity="top"/>
 
 </LinearLayout>

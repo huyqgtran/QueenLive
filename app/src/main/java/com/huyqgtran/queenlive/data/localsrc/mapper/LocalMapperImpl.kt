@@ -14,21 +14,20 @@ class LocalMapperImpl : LocalMapper {
         return with(jsonTour) {
             Tour(
                 name,
-                convertIntToDate(date),
+                date,
                 url
             )
         }
     }
 
-    private fun convertIntToDate(date: Int): Year = Year.of(date)
-
     override fun jsonShowToShow(jsonShow: String, tour: String): Show {
-        val components = jsonShow.split("\\s".toRegex()) //"04.12.1979" "Newcastle,"  "UK"
+        val components = jsonShow.split("\\s\\s".toRegex()) //"04.12.1979" "Newcastle,"  "UK"
         val date = LocalDate.parse(components[0].replace(".", "-")
             , DateTimeFormatter.ofPattern("dd-MM-yyyy")) // "04-12-1979"
-        val name = components[1].replace(",", "") // "Newcastle"
+        val name = components[1].split(",".toRegex())[0] // "Newcastle"
         return Show(date, name, tour)
     }
 
-    override fun jsonSongToSong(date: LocalDate, name: String, showName: String): Song = Song(date, name, showName)
+    override fun jsonSongToSong(date: LocalDate, name: String, showName: String, rarelyPlayed: Boolean): Song
+    = Song(date, name, showName, rarelyPlayed)
 }

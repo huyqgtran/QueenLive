@@ -1,10 +1,14 @@
 <resources>
     <string name="app_name">Queen Live</string>
     <string name="favorite">Favorite</string>
-    <string name="crazy_tour">Crazy tour</string>
-    <string name="notw_tour">NOTW tour</string>
-    <string name="game_tour">Game tour</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_text">Search on Youtube</string>
     <string name="share">Share</string>
+    <string name="help">Help</string>
+    <string name="home">Home</string>
+    <string name="rarely_played">Song might be played</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="first_par">Youtube is a great platform to listen to live performances of Queen.
+    It has all available performances and awesome discussions in comment section.\n\n</string>
+    <string name="second_par">Some performances don\'t have existing record.\n\n</string>
+    <string name="third_par">Songs have \"Song might be played\" description are only played in some shows of corresponding tour.</string>
 </resources>

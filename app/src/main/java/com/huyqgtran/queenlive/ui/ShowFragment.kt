@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
@@ -32,7 +33,7 @@ class ShowFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = ShowFragmentBinding.inflate(inflater, container, false)
         initUi()
         subscribeObs()
@@ -44,7 +45,11 @@ class ShowFragment : Fragment() {
         listAdapter = ShowAdapter{id, viewShow -> onMenuItemClick(id, viewShow)}
         binding.showRcv.run {
             adapter = listAdapter
+            ContextCompat.getDrawable(context, R.drawable.divider)?.let {
+                addItemDecoration(DividerDecorator(it))
+            }
         }
+        (activity as MainActivity).setToolbarTitle(navArgs.tourName)
     }
 
     private fun onMenuItemClick(itemId: Int, viewShow: ViewShow): Boolean {

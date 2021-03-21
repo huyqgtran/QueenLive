@@ -19,7 +19,8 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        //jcenter()
+        mavenCentral()
     }
 }
 
@@ -33,4 +34,6 @@ ext {
     roomVersion = '2.2.6'
     archLifecycleVersion = '2.2.0'
     version_moshi = "1.8.0"
+    koin_version = '3.0.1-beta-1'
+    hamcrestVersion = '2.2'
 }

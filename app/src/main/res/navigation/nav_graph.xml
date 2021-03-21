@@ -2,6 +2,16 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
     app:startDestination="@id/tour_fragment_dst">
+
+    <action android:id="@+id/to_show_fragment"
+        app:destination="@+id/show_fragment_dst"/>
+
+    <action android:id="@+id/to_tour_fragment"
+        app:destination="@+id/tour_fragment_dst"/>
+
+    <action android:id="@+id/to_help_fragment"
+        app:destination="@+id/help_fragment_dst"/>
+
     <fragment
         android:id="@+id/tour_fragment_dst"
         android:name="com.huyqgtran.queenlive.ui.TourFragment">
@@ -30,4 +40,8 @@
             app:argType="string"/>
 
     </fragment>
+
+    <fragment
+        android:id="@+id/help_fragment_dst"
+        android:name="com.huyqgtran.queenlive.ui.HelpFragment"/>
 </navigation>

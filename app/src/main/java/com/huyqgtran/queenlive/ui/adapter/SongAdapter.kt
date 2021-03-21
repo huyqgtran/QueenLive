@@ -28,6 +28,11 @@ class SongAdapter(val onItemClick: (Int, ViewSong) -> Boolean) : ListAdapter<Vie
 
         fun bind(item: ViewSong) {
             val displayStr: String = item.name
+            var note = ""
+            if (item.rarelyPlayed) {
+                note = binding.root.context.resources.getString(R.string.rarely_played)
+            }
+            binding.note.text = note
             binding.titleText.text = displayStr
             binding.moreBtn.setOnClickListener {
                 addPopupMenu(it, item)

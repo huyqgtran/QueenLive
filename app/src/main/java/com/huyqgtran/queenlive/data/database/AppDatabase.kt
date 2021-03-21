@@ -15,8 +15,8 @@ import com.huyqgtran.queenlive.utilities.DB_NAME
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.koin.core.KoinComponent
-import org.koin.core.inject
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 @Database(entities = [DbTour::class, DbShow::class, DbSong::class], version = 1, exportSchema = false)
 @TypeConverters(DbConverter::class)

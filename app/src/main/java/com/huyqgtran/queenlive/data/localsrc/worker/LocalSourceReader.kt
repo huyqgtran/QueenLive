@@ -14,12 +14,14 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 
 class LocalSourceReader(private val localMapper: LocalMapper,
                         private val dbMapper: DbMapper,
                         private val moShi: Moshi) {
     suspend fun getDataFromJsonAndInsertToDB(context: Context, queenLiveDao: QueenLiveDao) {
         val localTours = readJson(context)
+        Timber.d("tours size: %d", localTours.size)
         val dbTourList = mutableListOf<DbTour>()
         val dbShowList = mutableListOf<DbShow>()
         val dbSongList = mutableListOf<DbSong>()
@@ -29,12 +31,18 @@ class LocalSourceReader(private val localMapper: LocalMapper,
 
             val jsonSetList = jsonTour.setList
             val jsonShows = jsonTour.show
+            val jsonRarelyPlayed = jsonTour.rarelyPlayedSongs
             for (show in jsonShows) {
                 val domainShow = localMapper.jsonShowToShow(show, domainTour.name)
                 dbShowList.add(dbMapper.showToDbShow(domainShow))
 
                 for(song in jsonSetList) {
-                    val domainSong = localMapper.jsonSongToSong(domainShow.date, song, domainShow.name)
+                    val domainSong = localMapper.jsonSongToSong(domainShow.date, song, domainShow.name, false)
+                    dbSongList.add(dbMapper.songToDbSong(domainSong))
+                }
+
+                for (song in jsonRarelyPlayed) {
+                    val domainSong = localMapper.jsonSongToSong(domainShow.date, song, domainShow.name, true)
                     dbSongList.add(dbMapper.songToDbSong(domainSong))
                 }
             }

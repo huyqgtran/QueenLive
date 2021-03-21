@@ -28,8 +28,8 @@ class ShowAdapter(val onItemClick: (Int, ViewShow) -> Boolean)  : ListAdapter<Vi
     inner class ShowViewHolder (private val binding: ShowItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        private fun navigateToSongFragment(showDate: String, view: View) {
-            val action = ShowFragmentDirections.showFragmentToSongFragment(showDate)
+        private fun navigateToSongFragment(showInfo: String, view: View) {
+            val action = ShowFragmentDirections.showFragmentToSongFragment(showInfo)
             view.findNavController().navigate(action)
         }
 
@@ -38,7 +38,7 @@ class ShowAdapter(val onItemClick: (Int, ViewShow) -> Boolean)  : ListAdapter<Vi
                 titleText.text = item.name
                 showDate.text = item.date
                 showItem.setOnClickListener {
-                    navigateToSongFragment(item.date, it)
+                    navigateToSongFragment(item.name + "|" + item.date, it)
                 }
                 moreBtn.setOnClickListener {
                     addPopupMenu(it, item)

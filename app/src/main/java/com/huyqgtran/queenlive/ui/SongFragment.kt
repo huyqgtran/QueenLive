@@ -6,9 +6,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.huyqgtran.queenlive.R
 import com.huyqgtran.queenlive.databinding.SongFragmentBinding
 import com.huyqgtran.queenlive.ui.adapter.SongAdapter
@@ -20,7 +22,7 @@ import timber.log.Timber
 
 class SongFragment : Fragment() {
     private val viewModel by viewModel<SongViewModel> {
-        parametersOf(navArgs.showDate)
+        parametersOf(getShowDate(navArgs.showDate))
     }
     private val navArgs: SongFragmentArgs by navArgs()
     private lateinit var listAdapter: SongAdapter
@@ -34,9 +36,19 @@ class SongFragment : Fragment() {
         return binding.root
     }
 
+    private fun getShowDate(showInfo: String): String {
+        return showInfo.split("\\|".toRegex())[1]
+    }
+
     private fun initUi() {
         listAdapter = SongAdapter{id, viewSong -> onMenuItemClick(viewSong, id)}
-        binding.songRcv.adapter = listAdapter
+        binding.songRcv.apply {
+            adapter = listAdapter
+            ContextCompat.getDrawable(context, R.drawable.divider)?.let {
+                addItemDecoration(DividerDecorator(it))
+            }
+        }
+        (activity as MainActivity).setToolbarTitle(navArgs.showDate.replace("|", " "))
     }
 
     private fun onMenuItemClick(viewSong: ViewSong, itemId: Int): Boolean {

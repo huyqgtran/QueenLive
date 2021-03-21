@@ -5,10 +5,12 @@
 
     <dimen name="fab_margin">16dp</dimen>
 
-    <dimen name="list_item_padding">8dp</dimen>
+    <dimen name="list_item_padding">16dp</dimen>
     <dimen name="header_height">192dp</dimen>
     <dimen name="header_padding">16dp</dimen>
     <dimen name="header_image_width">100dp</dimen>
 
     <dimen name="tour_text_size">22sp</dimen>
+    <dimen name="nav_title_size">20sp</dimen>
+    <dimen name="help_text_size">18sp</dimen>
 </resources>

@@ -2,6 +2,9 @@ package com.huyqgtran.queenlive.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -13,6 +16,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.huyqgtran.queenlive.R
 import com.google.android.material.navigation.NavigationView
+import com.huyqgtran.queenlive.NavGraphDirections
+import com.huyqgtran.queenlive.utilities.HELP_GROUP_ID
+import com.huyqgtran.queenlive.utilities.HOME_GROUP_ID
+import com.huyqgtran.queenlive.utilities.TOUR_GROUP_ID
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,23 +42,49 @@ class MainActivity : AppCompatActivity() {
             .run {
             setupWithNavController(navController)
             setNavigationItemSelectedListener {
-                navigateToShowFragment(it.title.toString())
+                when(it.groupId) {
+                    HOME_GROUP_ID -> navigateToTourFragment()
+                    TOUR_GROUP_ID -> navigateToShowFragment(it.title.toString())
+                    HELP_GROUP_ID -> navigateToHelpFragment()
+                }
+
                 true
             }
         }
     }
 
+    fun setToolbarTitle(title: String) {
+        findViewById<Toolbar>(R.id.toolbar).title = title
+    }
+
     fun updateMenuDrawer(tourList: List<ViewTour>) {
         findViewById<NavigationView>(R.id.nav_view).menu.run {
             clear()
+            add(HOME_GROUP_ID, Menu.NONE, Menu.NONE, getString(R.string.home)).icon =
+                    ContextCompat.getDrawable(this@MainActivity, R.drawable.ic_home)
             for (tour in tourList) {
-                add(tour.name)
+                add(TOUR_GROUP_ID, Menu.NONE, Menu.NONE, tour.name).icon =
+                        ContextCompat.getDrawable(this@MainActivity, R.drawable.ic_music)
             }
+            add(HELP_GROUP_ID, Menu.NONE, Menu.NONE, getString(R.string.help)).icon =
+                    ContextCompat.getDrawable(this@MainActivity, R.drawable.ic_help)
         }
     }
 
+    private fun navigateToTourFragment() {
+        val action = NavGraphDirections.toTourFragment()
+        navController.navigate(action)
+        drawerLayout.closeDrawer(GravityCompat.START, false)
+    }
+
+    private fun navigateToHelpFragment() {
+        val action = NavGraphDirections.toHelpFragment()
+        navController.navigate(action)
+        drawerLayout.closeDrawer(GravityCompat.START, false)
+    }
+
     private fun navigateToShowFragment(tourName: String) {
-        val action = TourFragmentDirections.tourFragmentToShowFragment(tourName)
+        val action = NavGraphDirections.toShowFragment(tourName)
         navController.navigate(action)
         drawerLayout.closeDrawer(GravityCompat.START, false)
     }

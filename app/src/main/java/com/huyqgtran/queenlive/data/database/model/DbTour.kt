@@ -8,6 +8,6 @@ import java.time.Year
 @Entity(tableName = "tours")
 data class DbTour (
     @PrimaryKey @ColumnInfo(name = "name") val name: String,
-    val date: Year,
+    val date: String,
     val descriptionUrl: String
 )

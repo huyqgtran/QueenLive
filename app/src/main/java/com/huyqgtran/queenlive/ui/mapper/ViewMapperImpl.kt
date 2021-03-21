@@ -16,7 +16,7 @@ class ViewMapperImpl : ViewMapper {
             with(it) {
                 ViewTour(
                     name,
-                    date.toString(),
+                    date,
                     Uri.parse(descriptionUrl)
                 )
             }
@@ -41,7 +41,8 @@ class ViewMapperImpl : ViewMapper {
                 ViewSong(
                         date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString(),
                         name,
-                        showName
+                        showName,
+                        rarePlayed
                 )
             }
         }

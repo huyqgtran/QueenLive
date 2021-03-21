@@ -2,6 +2,7 @@ package com.huyqgtran.queenlive.data.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.huyqgtran.queenlive.data.database.model.DbShow
 import com.huyqgtran.queenlive.data.database.model.DbSong
@@ -11,13 +12,13 @@ import java.time.LocalDate
 
 @Dao
 interface QueenLiveDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllShows(shows: List<DbShow>)
 
     @Insert
     suspend fun insertAllTours(tours: List<DbTour>)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllSongs(songs: List<DbSong>)
 
     @Query("SELECT * FROM tours")
