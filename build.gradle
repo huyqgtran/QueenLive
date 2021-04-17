@@ -19,7 +19,6 @@ buildscript {
 allprojects {
     repositories {
         google()
-        //jcenter()
         mavenCentral()
     }
 }
@@ -36,4 +35,10 @@ ext {
     version_moshi = "1.8.0"
     koin_version = '3.0.1-beta-1'
     hamcrestVersion = '2.2'
+    androidXTestCoreVersion = '1.2.0'
+    androidXTestExtKotlinRunnerVersion = '1.1.1'
+    robolectricVersion = '4.3.1'
+    junitVersion = '4.12'
+    fragmentVersion = '1.1.0-alpha07'
+    androidXTestCoreVersion = '1.2.0'
 }

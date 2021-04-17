@@ -13,6 +13,7 @@ import com.huyqgtran.queenlive.ui.adapter.TourAdapter
 import com.huyqgtran.queenlive.ui.viewmodels.TourViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
+import java.lang.ClassCastException
 
 
 class TourFragment : Fragment() {
@@ -48,14 +49,23 @@ class TourFragment : Fragment() {
                 addItemDecoration(DividerDecorator(it))
             }
         }
-        (activity as MainActivity).setToolbarTitle(getString(R.string.app_name))
+
+        try {
+            (activity as MainActivity).setToolbarTitle(getString(R.string.app_name))
+        } catch (e: ClassCastException) {
+            Timber.e(e)
+        }
     }
 
     private fun subscribeObs() {
         viewModel.tours.observe(viewLifecycleOwner, Observer {
             Timber.d("update tours%s", it.size)
             listAdapter.setData(it)
-            (activity as MainActivity).updateMenuDrawer(it)
+            try {
+                (activity as MainActivity).updateMenuDrawer(it)
+            } catch (e: ClassCastException) {
+                Timber.e(e)
+            }
         })
     }
 }
